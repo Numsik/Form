@@ -7,7 +7,39 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <form class="formular" id="myForm" novalidate>
+        <div>
+            <p>E-mail</p>
+            <input type="email" id="email" name="email" required>
+            <div class="error-message" id="emailError"></div>
+        </div>
 
+        <div>
+            <p>Země</p>
+            <input type="text" id="country" name="country" required>
+            <div class="error-message" id="countryError"></div>
+        </div>
+
+        <div>
+            <p>PSČ</p>
+            <input type="text" id="zipcode" name="zipcode" required>
+            <div class="error-message" id="zipcodeError"></div>
+        </div>
+
+        <div>
+            <p>Heslo</p>
+            <input type="password" id="password" name="password" required>
+            <div class="error-message" id="passwordError"></div>
+        </div>
+
+        <div>
+            <p>Znova-heslo</p>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <div class="error-message" id="confirmPasswordError"></div>
+        </div>
+
+        <button type="submit">Odeslat</button>
+    </form>
 
     <script src="index.js"></script>
 </body>
