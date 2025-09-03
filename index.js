@@ -74,16 +74,15 @@ form.addEventListener('submit', function(event){
         showError('password', "Heslo je špatně")
         valid = false;
     }
-    if (!validateConfirmPassword(passwordconfirmValue)){
+    if (!validateConfirmPassword(passwordValue, passwordconfirmValue)){
         showError('confirmPassword', 'heslo neni stejne zkus to znova..')
+        valid = false;
     }
-
-
-    if (!validateCountry(pscinput)){
-        showError('PSČ', "není desutpné je moc krátké")
-    }else{
+    if (valid){   
         alert('formular odeslan')
     }
+    
+  
 })
 
 function showError(fieldId, message){
