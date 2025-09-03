@@ -13,19 +13,55 @@ function validateemail(email){
     return emailRegex.test(email);
 
 }
+
+function validateCountry(country){
+    if (country === ""){
+        return false;
+    }
+    const countryRegex = /^[A-Za-zÀ-ž\s]{2,}$/;
+    return countryRegex.test(country);
+
+}
+
+function validateZip(zip){
+    const zipRegex = /^[0-9]{5}$/;
+    return zipRegex.test(zip);
+}
+
+
+
 emailInput.addEventListener('blur', function (){
     const emailvalue = emailInput.value;
     if (!validateemail(emailvalue)){
         showError('email', "Email neni dostupný");
     }
+    
+
 })
 
 form.addEventListener('submit', function(event){
     event.preventDefault();
 
     const emailValue = emailInput.value;
+    const countryvalue = countryInput.value;
+    const zipValue = zipInput.value;
+
+    let valid = true;
     if (!validateemail(emailValue)){
-        showError('email', "email neni dostupny")
+        showError('email', "email neni dostupny");
+        valid = false;
+    }
+    if (!validateCountry(countryvalue)){
+        showError('country', 'napiš dobrř název státu');
+    }
+    if (!validateZip(zipValue)){
+        showError('zipcode', 'napiš dobře zip code');
+    }
+
+    const pscinput = zipInput.value;
+
+    if (!validateCountry(pscinput)){
+        showError('PSČ', "není desutpné je moc krátké")
     }else{
         alert('formular odeslan')
     }
@@ -38,4 +74,5 @@ function showError(fieldId, message){
     input.classList.add('error');
     errorDiv.textContent = message;
     errorDiv.classList.add('show');
+
 }
