@@ -28,6 +28,15 @@ function validateZip(zip){
     return zipRegex.test(zip);
 }
 
+function validatepassword(password){
+    return password.length >= 6;
+
+}
+
+function validateConfirmPassword(password, confirmpassword){
+    return password === confirmpassword;
+
+}
 
 
 emailInput.addEventListener('blur', function (){
@@ -45,6 +54,8 @@ form.addEventListener('submit', function(event){
     const emailValue = emailInput.value;
     const countryvalue = countryInput.value;
     const zipValue = zipInput.value;
+    const passwordValue = passwordInput.value;
+    const passwordconfirmValue = againpassInput.value;
 
     let valid = true;
     if (!validateemail(emailValue)){
@@ -53,12 +64,20 @@ form.addEventListener('submit', function(event){
     }
     if (!validateCountry(countryvalue)){
         showError('country', 'napiš dobrř název státu');
+        valid = false;
     }
     if (!validateZip(zipValue)){
         showError('zipcode', 'napiš dobře zip code');
+        valid = false;
+    }
+    if (!validatepassword(passwordValue)){
+        showError('password', "Heslo je špatně")
+        valid = false;
+    }
+    if (!validateConfirmPassword(passwordconfirmValue)){
+        showError('confirmPassword', 'heslo neni stejne zkus to znova..')
     }
 
-    const pscinput = zipInput.value;
 
     if (!validateCountry(pscinput)){
         showError('PSČ', "není desutpné je moc krátké")
